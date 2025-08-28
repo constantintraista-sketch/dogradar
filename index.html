@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DogRadar Pro - Piattaforma per Canili ed Enti</title>
+    <style>
+        /* STILI PROFESSIONALI - Tutto incluso qui! */
+        :root {
+            --primary: #FF6B35;
+            --secondary: #2EC4B6;
+            --dark: #1A1A1A;
+            --light: #FDFFFC;
+            --gray: #6C757D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        /* HEADER */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #FF9A3D 0%, #FF6B35 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* FEATURES */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        /* PRICING */
+        .pricing {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+        
+        .price-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* CONTACT */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2EC4B6 0%, #1A9F93 100%);
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+        
+        .footer-links li {
+            margin: 0 1rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">DogRadar Pro</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Funzionalità</a></li>
+                    <li><a href="#pricing">Prezzi</a></li>
+                    <li><a href="#testimonials">Testimonianze</a></li>
+                    <li><a href="#contact">Contatti</a></li>
+                </ul>
+                <a href="#contact" class="btn">Registrati</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Rivoluziona il Lavoro con i Cani</h1>
+            <p>Piattaforma dedicata a canili, enti pubblici e associazioni per gestire emergenze, adozioni e SOS in tempo reale</p>
+            <a href="#contact" class="btn">Inizia Gratis</a>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Funzionalità Principali</h2>
+                <p>Tutto ciò di cui hai bisogno in un'unica piattaforma</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>SOS in Tempo Reale</h3>
+                    <p>Ricevi notifiche immediate sugli interventi necessari nella tua zona</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Mappa Interattiva</h3>
+                    <p>Visualizza tutte le emergenze su una mappa aggiornata in tempo reale</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Report e Statistiche</h3>
+                    <p>Genera report dettagliati per ottimizzare il tuo lavoro</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Comunicazione Diretta</h3>
+                    <p>Contatta direttamente gli utenti che segnalano emergenze</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🐕</div>
+                    <h3>Gestione Adozioni</h3>
+                    <p>Organizza e traccia le adozioni in modo efficiente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Notifiche Personalizzate</h3>
+                    <p>Ricevi avvisi specifici per il tuo territorio</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Piani e Prezzi</h2>
+                <p>Soluzioni flessibili per ogni esigenza</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Base</h3>
+                    <div class="price">€0<span class="price-period">/sempre</span></div>
+                    <ul class="pricing-features">
+                        <li>3 SOS/mese gratuiti</li>
+                        <li>Mappa base</li>
+                        <li>Supporto email</li>
+                        <li>Accesso base alla piattaforma</li>
+                    </ul>
+                    <a href="#contact" class="btn">Inizia Gratis</a>
+                </div>
+                <div class="pricing-card popular">
+                    <h3>Professionale</h3>
+                    <div class="price">€49<span class="price-period">/mese</span></div>
+                    <ul class="pricing-features">
+                        <li>SOS illimitati</li>
+                        <li>Mappa avanzata in tempo reale</li>
+                        <li>Supporto prioritario 24/7</li>
+                        <li>Report dettagliati</li>
+                        <li>Gestione team (3 utenti)</li>
+                    </ul>
+                    <a href="#contact" class="btn">Prova Gratis</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">€99<span class="price-period">/mese</span></div>
+                    <ul class="pricing-features">
+                        <li>Tutto il piano Professionale</li>
+                        <li>Utenti illimitati</li>
+                        <li>API personalizzate</li>
+                        <li>Training dedicato</li>
+                        <li>Account manager</li>
+                    </ul>
+                    <a href="#contact" class="btn">Contattaci</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cosa Dicono di Noi</h2>
+                <p>Le esperienze di chi usa già DogRadar Pro</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Grazie a DogRadar abbiamo ridotto i tempi di intervento del 70%. Una rivoluzione per il nostro canile!"</p>
+                    <p class="testimonial-author">- Marco, Canile San Francesco</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"La mappa in tempo reale ci permette di organizzare gli interventi in modo efficiente. Imprescindibile!"</p>
+                    <p class="testimonial-author">- Laura, Comune di Milano</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Il sistema di notifiche ci ha aiutato a salvare decine di cani in pericolo. Semplicemente fantastico."</p>
+                    <p class="testimonial-author">- Roberto, Associazione Lida</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Registrati Ora</h2>
+                <p>Inizia la tua prova gratuita di 14 giorni</p>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nome Struttura/Ente</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefono</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo di Struttura</label>
+                        <select id="type" name="type">
+                            <option value="">Seleziona...</option>
+                            <option value="canile">Canile/Rifugio</option>
+                            <option value="comune">Comune/Ente Pubblico</option>
+                            <option value="associazione">Associazione</option>
+                            <option value="veterinario">Clinica Veterinaria</option>
+                            <option value="other">Altro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Messaggio (opzionale)</label>
+                        <textarea id="message" name="message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Invia Richiesta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="logo">DogRadar Pro</div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Funzionalità</a></li>
+                <li><a href="#pricing">Prezzi</a></li>
+                <li><a href="#testimonials">Testimonianze</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+            <p>© 2024 DogRadar Pro. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT SEMPLICE PER IL FORM
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Grazie per la tua richiesta! Ti contatteremo entro 24 ore.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
